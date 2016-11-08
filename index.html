@@ -6,5 +6,46 @@
   </head>
   <body>
     <h1>Welcome!</h1>
+
+<script type="text/javascript">
+'use strict';
+
+  //fetch
+ function showMovies() {
+   fetch(`/api/movies/`)
+   .then(r => r.json())
+   .then(data => renderMovies(data)) //pass to function renderMovies
+   .catch(err => console.log(err)); }
+
+   function renderMovies (movies) {
+
+const body = document.querySelector('body');
+
+for(let i = 0; 1< movies.length;i++){
+  let containerdiv = document.createElement('div');
+  let pid = document.createElement('div');
+  let ptitle = document.createElement('div');
+  let prelease = document.createElement('div');
+  let purl = document.createElement('p');
+
+  pid.textContent = `id: {movies[1].id}`;
+  ptitle.textContent = `title: {movies[1].title}`;
+  prelease.textContent = `release date: {movies[1].release_date}`;
+  purl.textContent = `url: {movies[1].imbd_url}`;
+
+  containerdiv.appendChild(pid);
+  containerdiv.appendChild(ptitle);
+  containerdiv.appendChild(prelease);
+  containerdiv.appendChild(purl);
+
+  body.appendChild(containerdiv);
+  }
+}
+showMovies();
+
+
+
+</script>
+
   </body>
 </html>
